@@ -27,7 +27,7 @@ export function BoardPage() {
           <FilterSidebar />
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-5">
-              <p className="text-[10px] font-semibold text-white/25 uppercase tracking-widest">
+              <p className="text-[10px] font-semibold text-white/18 uppercase tracking-widest">
                 {loading
                   ? 'Loading…'
                   : `${items.length} ${items.length === 1 ? 'post' : 'posts'}`}

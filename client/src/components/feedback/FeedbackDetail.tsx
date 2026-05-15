@@ -31,18 +31,18 @@ function DeleteConfirmDialog({
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
       <RadixDialog.Portal>
-        <RadixDialog.Overlay className="fixed inset-0 bg-black/55 backdrop-blur-md z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
-        <RadixDialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-sm bg-[#0c0c20]/90 backdrop-blur-2xl rounded-3xl border border-white/[0.10] shadow-[0_0_60px_rgba(239,68,68,0.12)] p-6 data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95">
+        <RadixDialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
+        <RadixDialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-sm bg-[#0e0e10]/95 backdrop-blur-2xl rounded-2xl border border-white/[0.08] shadow-[0_24px_64px_rgba(0,0,0,0.7)] p-6 data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95">
           <div className="flex items-start justify-between mb-4">
             <div>
-              <RadixDialog.Title className="text-base font-semibold text-white">
+              <RadixDialog.Title className="text-base font-semibold text-white/88">
                 Delete this feedback?
               </RadixDialog.Title>
-              <RadixDialog.Description className="text-sm text-white/45 mt-1">
+              <RadixDialog.Description className="text-sm text-white/38 mt-1">
                 This action cannot be undone.
               </RadixDialog.Description>
             </div>
-            <RadixDialog.Close className="p-1.5 rounded-lg text-white/30 hover:text-white hover:bg-white/[0.08] transition-colors ml-2 flex-shrink-0">
+            <RadixDialog.Close className="p-1.5 rounded-lg text-white/22 hover:text-white/60 hover:bg-white/[0.07] transition-colors ml-2 flex-shrink-0">
               <X className="w-4 h-4" />
             </RadixDialog.Close>
           </div>
@@ -96,7 +96,7 @@ export function FeedbackDetail({ item, onStatusChange, onDelete }: FeedbackDetai
 
   return (
     <>
-      <div className="bg-white/[0.05] backdrop-blur-xl border border-white/[0.09] rounded-3xl overflow-hidden shadow-[0_0_60px_rgba(139,92,246,0.08)]">
+      <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl overflow-hidden">
         <div className="p-6 sm:p-8">
           <div className="flex items-start gap-5">
             {/* Upvote */}
@@ -105,10 +105,10 @@ export function FeedbackDetail({ item, onStatusChange, onDelete }: FeedbackDetai
               disabled={loading}
               aria-label={hasVoted ? 'Remove upvote' : 'Upvote'}
               className={cn(
-                'flex flex-col items-center gap-1.5 w-14 py-3.5 rounded-2xl border transition-all duration-200 flex-shrink-0',
+                'flex flex-col items-center gap-1.5 w-14 py-3.5 rounded-xl border transition-all duration-200 flex-shrink-0',
                 hasVoted
-                  ? 'bg-gradient-to-b from-violet-600/80 to-fuchsia-600/80 border-violet-500/30 text-white shadow-[0_0_20px_rgba(139,92,246,0.3)]'
-                  : 'bg-white/[0.05] border-white/[0.10] text-white/35 hover:border-violet-500/40 hover:text-white/80 hover:bg-white/[0.09]',
+                  ? 'bg-white border-white/0 text-[#080808]'
+                  : 'bg-white/[0.04] border-white/[0.09] text-white/28 hover:border-white/[0.18] hover:text-white/65 hover:bg-white/[0.07]',
                 loading && 'opacity-40 cursor-not-allowed'
               )}
             >
@@ -120,7 +120,7 @@ export function FeedbackDetail({ item, onStatusChange, onDelete }: FeedbackDetai
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <h1 className={cn(
                   'text-xl font-semibold leading-snug',
-                  item.status === 'done' ? 'line-through text-white/30' : 'text-white/90'
+                  item.status === 'done' ? 'line-through text-white/22' : 'text-white/85'
                 )}>
                   {item.title}
                 </h1>
@@ -136,8 +136,8 @@ export function FeedbackDetail({ item, onStatusChange, onDelete }: FeedbackDetai
                   )}
                 </div>
               </div>
-              <p className="mt-1 text-xs text-white/30">{createdAt}</p>
-              <p className="mt-5 text-sm text-white/55 leading-relaxed whitespace-pre-wrap">
+              <p className="mt-1 text-xs text-white/22">{createdAt}</p>
+              <p className="mt-5 text-sm text-white/48 leading-relaxed whitespace-pre-wrap">
                 {item.description}
               </p>
             </div>
@@ -148,7 +148,7 @@ export function FeedbackDetail({ item, onStatusChange, onDelete }: FeedbackDetai
           <div className="border-t border-white/[0.06] px-6 sm:px-8 py-4 flex justify-end">
             <button
               onClick={() => setDeleteOpen(true)}
-              className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-white/30 hover:text-red-400 hover:bg-red-500/10 rounded-xl transition-all duration-150"
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-white/22 hover:text-red-400 hover:bg-red-500/[0.09] rounded-lg transition-all duration-150"
             >
               <Trash2 className="w-3.5 h-3.5" />
               Delete feedback

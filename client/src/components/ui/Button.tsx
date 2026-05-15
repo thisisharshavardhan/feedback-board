@@ -16,13 +16,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'disabled:opacity-40 disabled:cursor-not-allowed',
           {
             primary:
-              'bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white hover:from-violet-600 hover:to-fuchsia-600 shadow-[0_0_20px_rgba(139,92,246,0.35)] hover:shadow-[0_0_28px_rgba(139,92,246,0.5)] active:scale-[0.98]',
+              'bg-white text-[#080808] hover:bg-white/90 active:scale-[0.98] shadow-[0_1px_3px_rgba(0,0,0,0.4)]',
             secondary:
-              'bg-white/[0.08] border border-white/[0.15] text-white/80 hover:bg-white/[0.13] hover:text-white hover:border-white/25 active:scale-[0.98] backdrop-blur-sm',
+              'bg-white/[0.06] border border-white/[0.10] text-white/65 hover:bg-white/[0.10] hover:text-white/85 hover:border-white/[0.18] active:scale-[0.98]',
             ghost:
-              'text-white/55 hover:text-white hover:bg-white/[0.08] active:bg-white/[0.12]',
+              'text-white/45 hover:text-white/80 hover:bg-white/[0.07] active:bg-white/[0.10]',
             danger:
-              'bg-red-500/70 border border-red-400/30 text-white hover:bg-red-500/90 shadow-[0_0_16px_rgba(239,68,68,0.25)] active:scale-[0.98]',
+              'bg-red-500/[0.12] border border-red-500/[0.22] text-red-400 hover:bg-red-500/[0.22] hover:text-red-300 active:scale-[0.98]',
           }[variant],
           {
             sm: 'text-xs px-3 py-1.5 gap-1.5',

@@ -19,7 +19,7 @@ export function FeedbackDetailPage() {
       <div className="max-w-3xl mx-auto px-6 py-8">
         <Link
           to="/"
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-white/35 hover:text-white/70 transition-colors mb-7"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-white/22 hover:text-white/58 transition-colors mb-7"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           Back to board
@@ -34,7 +34,7 @@ export function FeedbackDetailPage() {
         {error && (
           <div className="py-24 text-center">
             <p className="text-sm text-red-400 font-medium">Failed to load feedback</p>
-            <p className="text-xs text-white/30 mt-1">{error}</p>
+            <p className="text-xs text-white/22 mt-1">{error}</p>
           </div>
         )}
 

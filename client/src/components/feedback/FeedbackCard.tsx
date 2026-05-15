@@ -43,7 +43,7 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
   }
 
   return (
-    <div className="group flex items-stretch bg-white/[0.05] backdrop-blur-md border border-white/[0.08] rounded-2xl transition-all duration-200 hover:bg-white/[0.09] hover:border-white/[0.16] hover:shadow-[0_0_30px_rgba(139,92,246,0.10)] overflow-hidden">
+    <div className="group flex items-stretch bg-white/[0.03] border border-white/[0.07] rounded-xl transition-all duration-200 hover:-translate-y-px hover:border-white/[0.12] hover:bg-white/[0.05] hover:shadow-[0_0_0_1px_rgba(59,130,246,0.06),0_8px_24px_rgba(0,0,0,0.3)] overflow-hidden">
       {/* Upvote column */}
       <button
         onClick={(e) => { e.preventDefault(); toggle(); }}
@@ -52,8 +52,8 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
         className={cn(
           'flex flex-col items-center justify-center gap-1 w-14 py-4 border-r transition-all duration-200 flex-shrink-0',
           hasVoted
-            ? 'bg-gradient-to-b from-violet-600/80 to-fuchsia-600/80 border-violet-500/30 text-white'
-            : 'border-white/[0.08] text-white/30 hover:text-white/80 hover:bg-white/[0.06]',
+            ? 'bg-white border-white/0 text-[#080808]'
+            : 'border-white/[0.06] text-white/22 hover:text-white/65 hover:bg-white/[0.04]',
           loading && 'opacity-40 cursor-not-allowed'
         )}
       >
@@ -67,13 +67,13 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
           className={cn(
             'text-sm font-medium leading-snug',
             item.status === 'done'
-              ? 'line-through text-white/30'
-              : 'text-white/85'
+              ? 'line-through text-white/22'
+              : 'text-white/78'
           )}
         >
           {item.title}
         </h3>
-        <p className="mt-1 text-xs text-white/30">{date}</p>
+        <p className="mt-1 text-xs text-white/22">{date}</p>
       </Link>
 
       {/* Right side: badge + delete */}
@@ -90,10 +90,10 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
               >
                 {deleting ? 'Deleting…' : 'Confirm'}
               </button>
-              <span className="text-white/20">·</span>
+              <span className="text-white/15">·</span>
               <button
                 onClick={(e) => { e.preventDefault(); setConfirmingDelete(false); }}
-                className="text-xs text-white/35 hover:text-white/70 transition-colors"
+                className="text-xs text-white/28 hover:text-white/60 transition-colors"
               >
                 Cancel
               </button>
@@ -101,7 +101,7 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
           ) : (
             <button
               onClick={(e) => { e.preventDefault(); e.stopPropagation(); setConfirmingDelete(true); }}
-              className="opacity-0 group-hover:opacity-100 p-1 rounded-lg text-white/25 hover:text-red-400 hover:bg-red-500/10 transition-all duration-150"
+              className="opacity-0 group-hover:opacity-100 p-1 rounded-lg text-white/18 hover:text-red-400 hover:bg-red-500/[0.09] transition-all duration-150"
               aria-label="Delete feedback"
             >
               <Trash2 className="w-3.5 h-3.5" />

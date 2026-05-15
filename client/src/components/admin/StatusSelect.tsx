@@ -40,9 +40,9 @@ export function StatusSelect({ feedbackId, currentStatus, adminKey, onSuccess }:
       <RadixSelect.Trigger
         className={cn(
           'inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg',
-          'bg-white/[0.07] border border-white/[0.12] text-white/60',
-          'hover:bg-white/[0.11] hover:text-white/90 hover:border-white/20 transition-all duration-150 outline-none',
-          loading && 'opacity-50 cursor-not-allowed'
+          'bg-white/[0.05] border border-white/[0.09] text-white/48',
+          'hover:bg-white/[0.09] hover:text-white/75 hover:border-white/[0.15] transition-all duration-150 outline-none',
+          loading && 'opacity-40 cursor-not-allowed'
         )}
         aria-label="Change status"
       >
@@ -52,7 +52,7 @@ export function StatusSelect({ feedbackId, currentStatus, adminKey, onSuccess }:
 
       <RadixSelect.Portal>
         <RadixSelect.Content
-          className="z-50 bg-[#0e0e22]/95 backdrop-blur-xl border border-white/[0.10] rounded-xl shadow-[0_16px_48px_rgba(0,0,0,0.6)] p-1 min-w-[150px]"
+          className="z-50 bg-[#0e0e10]/95 backdrop-blur-xl border border-white/[0.09] rounded-xl shadow-[0_16px_48px_rgba(0,0,0,0.65)] p-1 min-w-[150px]"
           position="popper"
           sideOffset={4}
         >
@@ -63,13 +63,13 @@ export function StatusSelect({ feedbackId, currentStatus, adminKey, onSuccess }:
                 value={value}
                 className={cn(
                   'flex items-center justify-between gap-2 px-3 py-2 text-xs rounded-lg cursor-pointer outline-none',
-                  'text-white/70 hover:text-white hover:bg-white/[0.08]',
-                  'data-[highlighted]:bg-white/[0.08] data-[highlighted]:text-white'
+                  'text-white/55 hover:text-white/85 hover:bg-white/[0.07]',
+                  'data-[highlighted]:bg-white/[0.07] data-[highlighted]:text-white/85'
                 )}
               >
                 <RadixSelect.ItemText>{label}</RadixSelect.ItemText>
                 <RadixSelect.ItemIndicator>
-                  <Check className="w-3 h-3 text-violet-400" />
+                  <Check className="w-3 h-3 text-blue-400" />
                 </RadixSelect.ItemIndicator>
               </RadixSelect.Item>
             ))}

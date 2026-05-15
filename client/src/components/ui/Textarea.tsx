@@ -13,7 +13,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="flex flex-col gap-1.5">
         {label && (
-          <label htmlFor={textareaId} className="text-sm font-medium text-white/65">
+          <label htmlFor={textareaId} className="text-[11px] font-semibold text-white/40 uppercase tracking-wider">
             {label}
           </label>
         )}
@@ -21,17 +21,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={textareaId}
           className={cn(
-            'w-full px-3.5 py-2.5 text-sm text-white bg-white/[0.06] border rounded-xl outline-none resize-none',
-            'placeholder:text-white/20 backdrop-blur-sm',
-            'transition-all duration-200',
+            'w-full px-3.5 py-2.5 text-sm text-white/85 bg-white/[0.05] border rounded-xl outline-none resize-none',
+            'placeholder:text-white/18 transition-all duration-200',
             error
-              ? 'border-red-400/50 focus:ring-1 focus:ring-red-400/30 focus:bg-white/[0.09]'
-              : 'border-white/[0.10] focus:border-violet-500/55 focus:ring-1 focus:ring-violet-500/15 focus:bg-white/[0.09]',
+              ? 'border-red-500/40 focus:ring-1 focus:ring-red-500/20 focus:border-red-500/50'
+              : 'border-white/[0.09] focus:border-blue-500/40 focus:ring-1 focus:ring-blue-500/10',
             className
           )}
           {...props}
         />
-        {error && <p className="text-xs text-red-400/90">{error}</p>}
+        {error && <p className="text-xs text-red-400/80">{error}</p>}
       </div>
     );
   }

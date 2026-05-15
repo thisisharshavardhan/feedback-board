@@ -24,11 +24,9 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
   return (
     <div
       className={cn(
-        'flex items-center gap-3 px-4 py-3 rounded-2xl border text-sm font-medium backdrop-blur-xl',
-        'shadow-[0_8px_32px_rgba(0,0,0,0.4)]',
-        toast.type === 'success'
-          ? 'bg-[#0c1a14]/85 border-emerald-500/25 text-white'
-          : 'bg-[#1a0c0c]/85 border-red-400/25 text-white'
+        'flex items-center gap-3 px-4 py-3 rounded-xl border text-sm',
+        'bg-[#0e0e10]/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)]',
+        toast.type === 'success' ? 'border-white/[0.08]' : 'border-red-500/[0.18]'
       )}
     >
       {toast.type === 'success' ? (
@@ -36,10 +34,10 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
       ) : (
         <XCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
       )}
-      <span className="flex-1 text-white/85">{toast.message}</span>
+      <span className="flex-1 font-medium text-white/70">{toast.message}</span>
       <button
         onClick={() => onDismiss(toast.id)}
-        className="text-white/30 hover:text-white/70 transition-colors flex-shrink-0"
+        className="text-white/22 hover:text-white/55 transition-colors flex-shrink-0"
       >
         <X className="w-3.5 h-3.5" />
       </button>
@@ -56,7 +54,7 @@ export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2 w-80">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2 w-72">
       {toasts.map((t) => (
         <ToastItem key={t.id} toast={t} onDismiss={onDismiss} />
       ))}
