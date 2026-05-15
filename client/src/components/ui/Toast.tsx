@@ -10,12 +10,12 @@ export interface ToastMessage {
   message: string;
 }
 
-interface ToastProps {
+interface ToastItemProps {
   toast: ToastMessage;
   onDismiss: (id: string) => void;
 }
 
-function Toast({ toast, onDismiss }: ToastProps) {
+function ToastItem({ toast, onDismiss }: ToastItemProps) {
   useEffect(() => {
     const timer = setTimeout(() => onDismiss(toast.id), 4000);
     return () => clearTimeout(timer);
@@ -24,22 +24,22 @@ function Toast({ toast, onDismiss }: ToastProps) {
   return (
     <div
       className={cn(
-        'flex items-start gap-3 px-4 py-3 rounded-xl shadow-lg border text-sm font-medium',
-        'animate-in slide-in-from-bottom-2 fade-in duration-200',
+        'flex items-center gap-3 px-4 py-3 rounded-2xl border text-sm font-medium backdrop-blur-xl',
+        'shadow-[0_8px_32px_rgba(0,0,0,0.4)]',
         toast.type === 'success'
-          ? 'bg-white border-[#e5e5e5] text-[#0a0a0a]'
-          : 'bg-white border-red-200 text-red-700'
+          ? 'bg-[#0c1a14]/85 border-emerald-500/25 text-white'
+          : 'bg-[#1a0c0c]/85 border-red-400/25 text-white'
       )}
     >
       {toast.type === 'success' ? (
-        <CheckCircle className="w-4 h-4 mt-0.5 text-[#0a0a0a] flex-shrink-0" />
+        <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
       ) : (
-        <XCircle className="w-4 h-4 mt-0.5 text-red-500 flex-shrink-0" />
+        <XCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
       )}
-      <span className="flex-1">{toast.message}</span>
+      <span className="flex-1 text-white/85">{toast.message}</span>
       <button
         onClick={() => onDismiss(toast.id)}
-        className="text-[#a3a3a3] hover:text-[#0a0a0a] transition-colors flex-shrink-0"
+        className="text-white/30 hover:text-white/70 transition-colors flex-shrink-0"
       >
         <X className="w-3.5 h-3.5" />
       </button>
@@ -58,7 +58,7 @@ export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2 w-80">
       {toasts.map((t) => (
-        <Toast key={t.id} toast={t} onDismiss={onDismiss} />
+        <ToastItem key={t.id} toast={t} onDismiss={onDismiss} />
       ))}
     </div>
   );

@@ -58,7 +58,7 @@ export function FeedbackForm({ open, onOpenChange, onSuccess }: FeedbackFormProp
         />
         <Textarea
           label="Description"
-          placeholder="Describe the idea or issue in detail..."
+          placeholder="Describe the idea or issue in detail…"
           rows={5}
           error={errors.description?.message}
           {...register('description', {
@@ -66,7 +66,7 @@ export function FeedbackForm({ open, onOpenChange, onSuccess }: FeedbackFormProp
               validateDescription(v) === true ? true : validateDescription(v) as string,
           })}
         />
-        {error && <p className="text-xs text-red-500">{error}</p>}
+        {error && <p className="text-xs text-red-400/90">{error}</p>}
         <div className="flex justify-end gap-3 pt-1">
           <Button
             type="button"

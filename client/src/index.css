@@ -14,7 +14,88 @@
   }
 
   body {
-    background-color: #ffffff;
-    color: #0a0a0a;
+    background-color: #05050f;
+    color: white;
   }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* ─── Aurora Orbs ─────────────────────────────────── */
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.aurora-orb-1 {
+  top: -18%;
+  left: -12%;
+  width: min(70vw, 820px);
+  height: min(70vw, 820px);
+  background: radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.42) 0%, transparent 60%);
+  filter: blur(72px);
+  animation: aurora-drift-1 30s ease-in-out infinite;
+}
+
+.aurora-orb-2 {
+  top: 8%;
+  right: -14%;
+  width: min(58vw, 680px);
+  height: min(58vw, 680px);
+  background: radial-gradient(circle at 60% 40%, rgba(59, 130, 246, 0.30) 0%, transparent 60%);
+  filter: blur(80px);
+  animation: aurora-drift-2 38s ease-in-out infinite;
+}
+
+.aurora-orb-3 {
+  bottom: -18%;
+  left: 12%;
+  width: min(72vw, 900px);
+  height: min(72vw, 900px);
+  background: radial-gradient(circle at 50% 60%, rgba(6, 182, 212, 0.26) 0%, transparent 60%);
+  filter: blur(90px);
+  animation: aurora-drift-3 34s ease-in-out infinite;
+}
+
+.aurora-orb-4 {
+  bottom: 8%;
+  right: 4%;
+  width: min(48vw, 560px);
+  height: min(48vw, 560px);
+  background: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.20) 0%, transparent 60%);
+  filter: blur(65px);
+  animation: aurora-drift-4 25s ease-in-out infinite;
+}
+
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1);    opacity: 1; }
+  33%       { transform: translate(5%, 9%) scale(1.08); opacity: 0.85; }
+  66%       { transform: translate(-4%, 4%) scale(0.94); opacity: 0.95; }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1);    opacity: 1; }
+  40%       { transform: translate(-7%, -5%) scale(1.13); opacity: 0.8; }
+  70%       { transform: translate(5%, -8%)  scale(0.91); opacity: 0.9; }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1);      opacity: 0.9; }
+  50%       { transform: translate(9%, -9%) scale(1.18); opacity: 1; }
+}
+
+@keyframes aurora-drift-4 {
+  0%, 100% { transform: translate(0, 0) scale(1);    opacity: 0.9; }
+  50%       { transform: translate(-7%, 7%) scale(1.1); opacity: 0.7; }
 }

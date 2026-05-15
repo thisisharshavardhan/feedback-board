@@ -28,10 +28,10 @@ function SidebarButton({
     <button
       onClick={onClick}
       className={cn(
-        'w-full text-left px-3 py-2 rounded-lg text-sm transition-colors duration-100 font-medium',
+        'w-full text-left px-3 py-2 rounded-xl text-sm transition-all duration-150 font-medium',
         active
-          ? 'bg-[#0a0a0a] text-white'
-          : 'text-[#6b6b6b] hover:bg-[#f5f5f5] hover:text-[#0a0a0a]'
+          ? 'bg-white/[0.10] text-white border border-white/[0.14]'
+          : 'text-white/45 hover:text-white/80 hover:bg-white/[0.06]'
       )}
     >
       {children}
@@ -44,38 +44,42 @@ export function FilterSidebar() {
 
   return (
     <aside className="w-48 flex-shrink-0">
-      <div className="sticky top-[calc(3.5rem+1px)] flex flex-col gap-6 pt-1">
-        <div>
-          <p className="text-[10px] font-semibold text-[#b0b0b0] uppercase tracking-widest mb-2 px-3">
-            Status
-          </p>
-          <div className="flex flex-col gap-0.5">
-            {STATUS_OPTIONS.map(({ value, label }) => (
-              <SidebarButton
-                key={value}
-                active={state.status === value}
-                onClick={() => setStatus(value)}
-              >
-                {label}
-              </SidebarButton>
-            ))}
+      <div className="sticky top-6 flex flex-col gap-1">
+        <div className="bg-white/[0.04] backdrop-blur-md border border-white/[0.07] rounded-2xl p-3 flex flex-col gap-4">
+          <div>
+            <p className="text-[10px] font-semibold text-white/25 uppercase tracking-widest mb-2 px-1">
+              Status
+            </p>
+            <div className="flex flex-col gap-0.5">
+              {STATUS_OPTIONS.map(({ value, label }) => (
+                <SidebarButton
+                  key={value}
+                  active={state.status === value}
+                  onClick={() => setStatus(value)}
+                >
+                  {label}
+                </SidebarButton>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <p className="text-[10px] font-semibold text-[#b0b0b0] uppercase tracking-widest mb-2 px-3">
-            Sort by
-          </p>
-          <div className="flex flex-col gap-0.5">
-            {SORT_OPTIONS.map(({ value, label }) => (
-              <SidebarButton
-                key={value}
-                active={state.sort === value}
-                onClick={() => setSort(value)}
-              >
-                {label}
-              </SidebarButton>
-            ))}
+          <div className="border-t border-white/[0.06]" />
+
+          <div>
+            <p className="text-[10px] font-semibold text-white/25 uppercase tracking-widest mb-2 px-1">
+              Sort by
+            </p>
+            <div className="flex flex-col gap-0.5">
+              {SORT_OPTIONS.map(({ value, label }) => (
+                <SidebarButton
+                  key={value}
+                  active={state.sort === value}
+                  onClick={() => setSort(value)}
+                >
+                  {label}
+                </SidebarButton>
+              ))}
+            </div>
           </div>
         </div>
       </div>

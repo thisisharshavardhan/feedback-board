@@ -4,27 +4,27 @@ import { cn } from '../../utils/cn';
 const STATUS_CONFIG: Record<FeedbackStatus, { label: string; dot: string; container: string; text: string }> = {
   open: {
     label: 'Open',
-    dot: 'bg-[#d4d4d4]',
-    container: 'bg-white border border-[#e5e5e5]',
-    text: 'text-[#6b6b6b]',
+    dot: 'bg-cyan-400',
+    container: 'bg-cyan-500/10 border border-cyan-500/20',
+    text: 'text-cyan-300',
   },
   in_progress: {
     label: 'In Progress',
-    dot: 'bg-[#0a0a0a]',
-    container: 'bg-[#0a0a0a]',
-    text: 'text-white',
+    dot: 'bg-violet-400',
+    container: 'bg-violet-500/10 border border-violet-500/20',
+    text: 'text-violet-300',
   },
   done: {
     label: 'Done',
-    dot: 'bg-[#a3a3a3]',
-    container: 'bg-[#f5f5f5] border border-[#e5e5e5]',
-    text: 'text-[#6b6b6b]',
+    dot: 'bg-emerald-400',
+    container: 'bg-emerald-500/10 border border-emerald-500/20',
+    text: 'text-emerald-300',
   },
   closed: {
     label: 'Closed',
-    dot: 'bg-[#e0e0e0]',
-    container: 'bg-white border border-[#ebebeb]',
-    text: 'text-[#a3a3a3]',
+    dot: 'bg-white/20',
+    container: 'bg-white/[0.04] border border-white/10',
+    text: 'text-white/35',
   },
 };
 
@@ -38,7 +38,7 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium',
+        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium',
         container,
         text,
         className

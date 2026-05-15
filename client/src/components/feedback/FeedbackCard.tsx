@@ -43,38 +43,40 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
   }
 
   return (
-    <div className="group flex items-stretch gap-0 bg-white border border-[#e5e5e5] rounded-xl transition-all duration-150 hover:border-[#c8c8c8] hover:shadow-sm overflow-hidden">
+    <div className="group flex items-stretch bg-white/[0.05] backdrop-blur-md border border-white/[0.08] rounded-2xl transition-all duration-200 hover:bg-white/[0.09] hover:border-white/[0.16] hover:shadow-[0_0_30px_rgba(139,92,246,0.10)] overflow-hidden">
+      {/* Upvote column */}
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          toggle();
-        }}
+        onClick={(e) => { e.preventDefault(); toggle(); }}
         disabled={loading}
         aria-label={hasVoted ? 'Remove upvote' : 'Upvote'}
         className={cn(
-          'flex flex-col items-center justify-center gap-1 w-14 py-4 border-r transition-all duration-150 flex-shrink-0',
+          'flex flex-col items-center justify-center gap-1 w-14 py-4 border-r transition-all duration-200 flex-shrink-0',
           hasVoted
-            ? 'bg-[#0a0a0a] border-[#0a0a0a] text-white'
-            : 'bg-white border-[#e5e5e5] text-[#a3a3a3] hover:text-[#0a0a0a] hover:bg-[#fafafa]',
-          loading && 'opacity-50 cursor-not-allowed'
+            ? 'bg-gradient-to-b from-violet-600/80 to-fuchsia-600/80 border-violet-500/30 text-white'
+            : 'border-white/[0.08] text-white/30 hover:text-white/80 hover:bg-white/[0.06]',
+          loading && 'opacity-40 cursor-not-allowed'
         )}
       >
         <ChevronUp className="w-4 h-4" strokeWidth={2.5} />
         <span className="text-xs font-bold leading-none tabular-nums">{upvotes}</span>
       </button>
 
+      {/* Content */}
       <Link to={`/feedback/${item.id}`} className="flex-1 min-w-0 px-4 py-3.5 flex flex-col justify-center">
         <h3
           className={cn(
-            'text-sm font-medium text-[#0a0a0a] leading-snug',
-            item.status === 'done' && 'line-through text-[#a3a3a3]'
+            'text-sm font-medium leading-snug',
+            item.status === 'done'
+              ? 'line-through text-white/30'
+              : 'text-white/85'
           )}
         >
           {item.title}
         </h3>
-        <p className="mt-1 text-xs text-[#b0b0b0]">{date}</p>
+        <p className="mt-1 text-xs text-white/30">{date}</p>
       </Link>
 
+      {/* Right side: badge + delete */}
       <div className="flex flex-col items-end justify-center gap-2 pr-4 py-3.5 flex-shrink-0">
         <StatusBadge status={item.status} />
 
@@ -84,14 +86,14 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
               <button
                 onClick={handleDelete}
                 disabled={deleting}
-                className="text-xs font-medium text-red-500 hover:text-red-600 transition-colors disabled:opacity-50"
+                className="text-xs font-medium text-red-400 hover:text-red-300 transition-colors disabled:opacity-50"
               >
                 {deleting ? 'Deleting…' : 'Confirm'}
               </button>
-              <span className="text-[#e0e0e0]">·</span>
+              <span className="text-white/20">·</span>
               <button
                 onClick={(e) => { e.preventDefault(); setConfirmingDelete(false); }}
-                className="text-xs text-[#a3a3a3] hover:text-[#0a0a0a] transition-colors"
+                className="text-xs text-white/35 hover:text-white/70 transition-colors"
               >
                 Cancel
               </button>
@@ -99,7 +101,7 @@ export function FeedbackCard({ item, onDelete }: FeedbackCardProps) {
           ) : (
             <button
               onClick={(e) => { e.preventDefault(); e.stopPropagation(); setConfirmingDelete(true); }}
-              className="opacity-0 group-hover:opacity-100 p-1 rounded-md text-[#c0c0c0] hover:text-red-500 hover:bg-red-50 transition-all duration-150"
+              className="opacity-0 group-hover:opacity-100 p-1 rounded-lg text-white/25 hover:text-red-400 hover:bg-red-500/10 transition-all duration-150"
               aria-label="Delete feedback"
             >
               <Trash2 className="w-3.5 h-3.5" />

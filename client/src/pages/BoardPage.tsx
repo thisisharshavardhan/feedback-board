@@ -19,14 +19,15 @@ export function BoardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#fafafa] font-sans">
+    <div className="min-h-screen font-sans">
       <Header onSubmitClick={() => setFormOpen(true)} />
+
       <div className="max-w-5xl mx-auto px-6 py-8">
         <div className="flex gap-8">
           <FilterSidebar />
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-5">
-              <p className="text-xs font-semibold text-[#a3a3a3] uppercase tracking-widest">
+              <p className="text-[10px] font-semibold text-white/25 uppercase tracking-widest">
                 {loading
                   ? 'Loading…'
                   : `${items.length} ${items.length === 1 ? 'post' : 'posts'}`}
