@@ -21,6 +21,10 @@ export function createApp(): express.Application {
   app.use(express.json());
   app.use(requestLogger);
 
+  app.get('/api/health', (_req, res) => {
+    res.json({ status: 'ok' });
+  });
+
   app.use('/api/feedback', feedbackRouter);
 
   if (config.nodeEnv === 'production') {

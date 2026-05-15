@@ -11,7 +11,7 @@ export function Header({ onSubmitClick }: HeaderProps) {
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-sm font-semibold text-[#0a0a0a] tracking-tight">
-            Feedback
+            Feedback Board
           </span>
         </div>
         <Button size="sm" onClick={onSubmitClick}>
