@@ -24,7 +24,7 @@ export function createApp(): express.Application {
   app.use('/api/feedback', feedbackRouter);
 
   if (config.nodeEnv === 'production') {
-    const clientDist = path.resolve(__dirname, '../client/dist');
+    const clientDist = path.resolve(__dirname, '../../client/dist');
     if (fs.existsSync(clientDist)) {
       app.use(express.static(clientDist));
       app.get('*', (_req, res) => {
