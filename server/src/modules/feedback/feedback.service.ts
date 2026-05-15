@@ -82,6 +82,12 @@ export const feedbackService = {
     return { upvotes: updated.upvotes, hasVoted: !already };
   },
 
+  deleteById(feedbackId: string): void {
+    const existing = feedbackRepository.findById(feedbackId);
+    if (!existing) throw new AppError(404, ErrorCodes.NOT_FOUND, 'Feedback item not found');
+    feedbackRepository.deleteById(feedbackId);
+  },
+
   updateStatus(feedbackId: string, status: FeedbackStatus, voterToken: string): FeedbackItem {
     const existing = feedbackRepository.findById(feedbackId);
     if (!existing) throw new AppError(404, ErrorCodes.NOT_FOUND, 'Feedback item not found');

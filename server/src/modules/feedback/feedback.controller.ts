@@ -49,6 +49,15 @@ export const feedbackController = {
     }
   },
 
+  deleteFeedback(req: Request, res: Response, next: NextFunction): void {
+    try {
+      feedbackService.deleteById(req.params.id);
+      res.json({ data: null, error: null });
+    } catch (err) {
+      next(err);
+    }
+  },
+
   updateStatus(req: Request, res: Response, next: NextFunction): void {
     try {
       const item = feedbackService.updateStatus(

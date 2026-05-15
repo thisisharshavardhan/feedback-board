@@ -47,3 +47,7 @@ export function updateFeedbackStatus(
     adminKey,
   });
 }
+
+export function deleteFeedback(id: string, adminKey: string): Promise<null> {
+  return apiFetch<null>(`/feedback/${id}`, { method: 'DELETE', adminKey });
+}

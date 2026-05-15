@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useFeedbackDetail } from '../hooks/useFeedbackDetail';
 import { FeedbackDetail } from '../components/feedback/FeedbackDetail';
@@ -10,27 +10,28 @@ export function FeedbackDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { item, loading, error, refetch } = useFeedbackDetail(id!);
   const toast = useToast();
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-[#fafafa] font-sans">
       <Header onSubmitClick={() => {}} />
-      <div className="max-w-3xl mx-auto px-6 py-10">
+      <div className="max-w-3xl mx-auto px-6 py-8">
         <Link
           to="/"
-          className="inline-flex items-center gap-1.5 text-xs text-[#6b6b6b] hover:text-[#0a0a0a] transition-colors mb-8"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-[#6b6b6b] hover:text-[#0a0a0a] transition-colors mb-7"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           Back to board
         </Link>
 
         {loading && (
-          <div className="flex justify-center py-20">
+          <div className="flex justify-center py-24">
             <Spinner size="lg" />
           </div>
         )}
 
         {error && (
-          <div className="py-20 text-center">
+          <div className="py-24 text-center">
             <p className="text-sm text-red-500 font-medium">Failed to load feedback</p>
             <p className="text-xs text-[#a3a3a3] mt-1">{error}</p>
           </div>
@@ -43,6 +44,7 @@ export function FeedbackDetailPage() {
               refetch();
               toast.success('Status updated');
             }}
+            onDelete={() => navigate('/')}
           />
         )}
       </div>

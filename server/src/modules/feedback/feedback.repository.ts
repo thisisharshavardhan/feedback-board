@@ -90,4 +90,8 @@ export const feedbackRepository = {
       .all(voterToken, ...feedbackIds) as unknown as { feedback_id: string }[];
     return new Set(rows.map((r) => r.feedback_id));
   },
+
+  deleteById(id: string): void {
+    getDb().prepare('DELETE FROM feedback WHERE id = ?').run(id);
+  },
 };

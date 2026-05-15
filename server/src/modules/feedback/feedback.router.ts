@@ -27,5 +27,6 @@ router.patch(
   validate(validateUpdateStatus),
   feedbackController.updateStatus
 );
+router.delete('/:id', requireAdminKey, feedbackController.deleteFeedback);
 
 export { router as feedbackRouter };

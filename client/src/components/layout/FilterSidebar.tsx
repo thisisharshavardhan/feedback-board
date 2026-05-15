@@ -11,56 +11,70 @@ const STATUS_OPTIONS: { value: FeedbackStatus | 'all'; label: string }[] = [
 ];
 
 const SORT_OPTIONS: { value: SortOrder; label: string }[] = [
-  { value: 'newest', label: 'Newest' },
+  { value: 'newest', label: 'Newest first' },
   { value: 'top', label: 'Top voted' },
 ];
+
+function SidebarButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        'w-full text-left px-3 py-2 rounded-lg text-sm transition-colors duration-100 font-medium',
+        active
+          ? 'bg-[#0a0a0a] text-white'
+          : 'text-[#6b6b6b] hover:bg-[#f5f5f5] hover:text-[#0a0a0a]'
+      )}
+    >
+      {children}
+    </button>
+  );
+}
 
 export function FilterSidebar() {
   const { state, setStatus, setSort } = useFilter();
 
   return (
-    <aside className="w-52 flex-shrink-0">
-      <div className="sticky top-20 flex flex-col gap-6">
+    <aside className="w-48 flex-shrink-0">
+      <div className="sticky top-[calc(3.5rem+1px)] flex flex-col gap-6 pt-1">
         <div>
-          <p className="text-xs font-semibold text-[#a3a3a3] uppercase tracking-wider mb-2.5">
+          <p className="text-[10px] font-semibold text-[#b0b0b0] uppercase tracking-widest mb-2 px-3">
             Status
           </p>
           <div className="flex flex-col gap-0.5">
             {STATUS_OPTIONS.map(({ value, label }) => (
-              <button
+              <SidebarButton
                 key={value}
+                active={state.status === value}
                 onClick={() => setStatus(value)}
-                className={cn(
-                  'text-left px-3 py-2 rounded-lg text-sm transition-colors duration-100',
-                  state.status === value
-                    ? 'bg-[#0a0a0a] text-white font-medium'
-                    : 'text-[#6b6b6b] hover:bg-[#f5f5f5] hover:text-[#0a0a0a]'
-                )}
               >
                 {label}
-              </button>
+              </SidebarButton>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="text-xs font-semibold text-[#a3a3a3] uppercase tracking-wider mb-2.5">
+          <p className="text-[10px] font-semibold text-[#b0b0b0] uppercase tracking-widest mb-2 px-3">
             Sort by
           </p>
           <div className="flex flex-col gap-0.5">
             {SORT_OPTIONS.map(({ value, label }) => (
-              <button
+              <SidebarButton
                 key={value}
+                active={state.sort === value}
                 onClick={() => setSort(value)}
-                className={cn(
-                  'text-left px-3 py-2 rounded-lg text-sm transition-colors duration-100',
-                  state.sort === value
-                    ? 'bg-[#0a0a0a] text-white font-medium'
-                    : 'text-[#6b6b6b] hover:bg-[#f5f5f5] hover:text-[#0a0a0a]'
-                )}
               >
                 {label}
-              </button>
+              </SidebarButton>
             ))}
           </div>
         </div>

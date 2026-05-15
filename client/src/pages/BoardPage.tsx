@@ -13,21 +13,31 @@ export function BoardPage() {
   const { items, loading, error, refetch } = useFeedback(state.status, state.sort);
   const toast = useToast();
 
+  function handleDelete(_id: string) {
+    refetch();
+    toast.success('Feedback deleted');
+  }
+
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-[#fafafa] font-sans">
       <Header onSubmitClick={() => setFormOpen(true)} />
-      <div className="max-w-5xl mx-auto px-6 py-10">
-        <div className="flex gap-10">
+      <div className="max-w-5xl mx-auto px-6 py-8">
+        <div className="flex gap-8">
           <FilterSidebar />
           <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-base font-semibold text-[#0a0a0a]">
-                {items.length > 0 && !loading
-                  ? `${items.length} ${items.length === 1 ? 'post' : 'posts'}`
-                  : 'Feedback'}
-              </h2>
+            <div className="flex items-center justify-between mb-5">
+              <p className="text-xs font-semibold text-[#a3a3a3] uppercase tracking-widest">
+                {loading
+                  ? 'Loading…'
+                  : `${items.length} ${items.length === 1 ? 'post' : 'posts'}`}
+              </p>
             </div>
-            <FeedbackList items={items} loading={loading} error={error} />
+            <FeedbackList
+              items={items}
+              loading={loading}
+              error={error}
+              onDelete={handleDelete}
+            />
           </div>
         </div>
       </div>
